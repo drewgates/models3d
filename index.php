@@ -69,8 +69,3 @@ if(empty($_SERVER['PHP_AUTH_PW'])) {
 
   </body>
 </html>
-
-   if( preg_match('([a-zA-Z])', $myString) )
-   {
-      echo('The string contains letters.');
-   }
