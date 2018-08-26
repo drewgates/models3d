@@ -1,18 +1,18 @@
 <?php
 
 header("Content-type: text/html; charset=utf-8");
-if(empty($_SERVER['PHP_AUTH_USER'])) {
+if(empty($_SERVER['PHP_AUTH_PW'])) {
     header('WWW-Authenticate: Basic realm=""');
     header('HTTP/1.0 401 Unauthorized');
     echo 'Password Required';
     exit;
 } else {
-    $password = "boots";
+    $password = "whatever";
     if(
     ($_SERVER['PHP_AUTH_PW'] != $password)) {
       header('WWW-Authenticate: Basic realm=""');
         header('HTTP/1.0 401 Unauthorized');
-        echo 'Login and Password Required';
+        echo 'Password Required';
         exit;
     } else {
         echo "<title>".(isset($title)?$title:"Models.")."</title>\n";
@@ -70,8 +70,7 @@ if(empty($_SERVER['PHP_AUTH_USER'])) {
   </body>
 </html>
 
-   if( preg_match('([a-zA-Z])', $myString) ) 
-   { 
+   if( preg_match('([a-zA-Z])', $myString) )
+   {
       echo('The string contains letters.');
    }
-
