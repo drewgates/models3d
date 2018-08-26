@@ -1,4 +1,6 @@
 <?php
+$password = "whatever";
+$dir = "/var/www/html/models";
 
 header("Content-type: text/html; charset=utf-8");
 if(empty($_SERVER['PHP_AUTH_PW'])) {
@@ -7,7 +9,6 @@ if(empty($_SERVER['PHP_AUTH_PW'])) {
     echo 'Password Required';
     exit;
 } else {
-    $password = "whatever";
     if(
     ($_SERVER['PHP_AUTH_PW'] != $password)) {
       header('WWW-Authenticate: Basic realm=""');
@@ -52,7 +53,6 @@ if(empty($_SERVER['PHP_AUTH_PW'])) {
           </button>
           <ul class="list">
               <?php
-              $dir = "/var/www/html/models";
               $files1 = scandir($dir);
               $files2 = scandir($dir, 1);
               foreach ($files1 as &$value) {
