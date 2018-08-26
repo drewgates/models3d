@@ -1,7 +1,7 @@
 # models3d
 
 ## Introduction
-models3d is created as a simple, responsive site for listing the names of STL files in a directory, and rendering them in a preview window as they are selected.
+models3d is a simple, responsive site for listing the names of STL files in a directory, and rendering them in a preview window as they are selected.
 
 This site should work on any web server with PHP support, though it's possible that authentiation may not function properly.
 
