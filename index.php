@@ -3,21 +3,13 @@ $password = "whatever";
 $dir = "/var/www/html/models";
 
 header("Content-type: text/html; charset=utf-8");
-if(empty($_SERVER['PHP_AUTH_PW'])) {
+if(empty($_SERVER['PHP_AUTH_PW']) || $_SERVER['PHP_AUTH_PW'] != $password) {
     header('WWW-Authenticate: Basic realm=""');
     header('HTTP/1.0 401 Unauthorized');
     echo 'Password Required';
     exit;
 } else {
-    if(
-    ($_SERVER['PHP_AUTH_PW'] != $password)) {
-      header('WWW-Authenticate: Basic realm=""');
-        header('HTTP/1.0 401 Unauthorized');
-        echo 'Password Required';
-        exit;
-    } else {
-        echo "<title>".(isset($title)?$title:"Models.")."</title>\n";
-    }
+  echo "<title>".(isset($title)?$title:"Models.")."</title>\n";
 }
 
 ?>
@@ -46,6 +38,16 @@ if(empty($_SERVER['PHP_AUTH_PW'])) {
     </script>
     <h1>Model Repository</h1>
     <p>This collection is comprised primarily of models designed by Miguel Zavala (mz4250), and are provided here for easy access for 3D printing. Most models were originally distributed through Shapeways, which does not provide for easy downloading of files.</p>
+
+    <?php
+    $files1 = scandir($dir);
+    $files2 = scandir($dir, 1);
+    ?>
+
+    <p>There are a total of <?php echo count($files1) ?> files in this directory.</p>
+
+
+
       <div id="models">
           <input class="search" placeholder="Search" />
           <button class="sort" data-sort="name">
@@ -53,8 +55,6 @@ if(empty($_SERVER['PHP_AUTH_PW'])) {
           </button>
           <ul class="list">
               <?php
-              $files1 = scandir($dir);
-              $files2 = scandir($dir, 1);
               foreach ($files1 as &$value) {
           if(preg_match('([a-zA-Z])', $value)) {
                     echo "<li>";
