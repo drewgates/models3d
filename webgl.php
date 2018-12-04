@@ -51,11 +51,13 @@
 		<script src="js/STLLoader.js"></script>
 		<script src="js/Detector.js"></script>
 		<script src="js/stats.min.js"></script>
+		<script src="js/OrbitControls.js"></script>
 
 		<script>
 			if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
 			var container, stats;
 			var camera, cameraTarget, scene, renderer;
+			let orbitControls = null;
 			init();
 			animate();
 			function init() {
@@ -69,7 +71,7 @@
 				scene.fog = new THREE.Fog( 0x72645b, 2, 15 );
 
 				// Ground
-				var plane = new THREE.Mesh(
+				/*var plane = new THREE.Mesh(
 					new THREE.PlaneBufferGeometry( 40, 40 ),
 					new THREE.MeshPhongMaterial( { color: 0x999999, specular: 0x101010 } )
 				);
@@ -77,7 +79,7 @@
 				plane.position.y = -0.5;
 				scene.add( plane );
 
-				plane.receiveShadow = true;
+				plane.receiveShadow = true;*/
 
 
 				// ASCII file
@@ -122,6 +124,9 @@
 				renderer.shadowMap.enabled = true;
 
 				container.appendChild( renderer.domElement );
+
+				orbitControls = new THREE.OrbitControls( camera, renderer.domElement );
+				orbitControls.autoRotate = true;
 
 				// stats
 
@@ -173,17 +178,16 @@
 
 				render();
 				stats.update();
-
+				if (orbitControls != null) {
+					orbitControls.update();
+				}
 			}
 
 			function render() {
 
 				var timer = Date.now() * 0.0005;
 
-				camera.position.x = Math.cos( timer ) * 3;
-				camera.position.z = Math.sin( timer ) * 3;
-
-				camera.lookAt( cameraTarget );
+				//camera.lookAt( cameraTarget );
 
 				renderer.render( scene, camera );
 

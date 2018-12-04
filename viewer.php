@@ -1,8 +1,8 @@
 <html>
-<head>
-<script src="js/three.min.js"></script>
-<script src="js/STLLoader.js"></script>
-</head>
+  <head>
+    <script src="js/three.min.js"></script>
+    <script src="js/STLLoader.js"></script>
+  </head>
 <body>
 
 
@@ -34,8 +34,6 @@ function init(){
 
     // STL file to be loaded
     loader.load('models/Arakocra_body.stl');
-
-
 
     // lights
     scene.add(new THREE.AmbientLight(0x736F6E));
@@ -74,7 +72,8 @@ function onWindowResize(){
       camera.position.z=r*Math.sin(timer);
       camera.lookAt(scene.position);
       renderer.render(scene, camera);
-      renderer.setClearColor(0xf5f5f5, 1);}
+      renderer.setClearColor(0xf5f5f5, 1);
+  }
 </script>
 
 </body>
