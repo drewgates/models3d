@@ -44,18 +44,20 @@
 
 
 		<div id="info">
-			This model is <a href="/models/<?php echo $file; ?>"><?php echo $file; ?></a>.
+			This model is <a href="./models/<?php echo $file; ?>"><?php echo $file; ?></a>.
 		</div>
 
 		<script src="./js/three.min.js"></script>
 		<script src="js/STLLoader.js"></script>
 		<script src="js/Detector.js"></script>
 		<script src="js/stats.min.js"></script>
+		<script src="./js/OrbitControls.js"></script>
 
 		<script>
 			if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
 			var container, stats;
 			var camera, cameraTarget, scene, renderer;
+			var orbitControls;
 			init();
 			animate();
 			function init() {
@@ -130,6 +132,9 @@
 
 				//
 
+				orbitControls = new THREE.OrbitControls(camera, renderer.domElement);
+				orbitControls.autoRotate = true;
+
 				window.addEventListener( 'resize', onWindowResize, false );
 
 			}
@@ -179,12 +184,7 @@
 			function render() {
 
 				var timer = Date.now() * 0.0005;
-
-				camera.position.x = Math.cos( timer ) * 3;
-				camera.position.z = Math.sin( timer ) * 3;
-
-				camera.lookAt( cameraTarget );
-
+				orbitControls.update();
 				renderer.render( scene, camera );
 
 			}

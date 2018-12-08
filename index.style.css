@@ -1,0 +1,20 @@
+body{
+	max-height: 100vh;
+	overflow: none;
+}
+#model-viewer{
+	height: 50vh;
+}
+
+#model-viewer iframe{
+	height: 100%;
+	width: 100%;
+}
+
+.list{
+	overflow-y: auto;
+}
+
+.container{
+	height: 100%;
+}
