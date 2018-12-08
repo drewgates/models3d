@@ -2,6 +2,7 @@
 <head>
 <script src="js/three.min.js"></script>
 <script src="js/STLLoader.js"></script>
+<script src="js/OrbitControls.js"></script>
 </head>
 <body>
 
@@ -9,6 +10,7 @@
 
 <script>
 var container, camera, scene, renderer;
+var orbitControls;
 
 init();
 animate();
@@ -35,7 +37,8 @@ function init(){
     // STL file to be loaded
     loader.load('models/Arakocra_body.stl');
 
-
+    controls = new THREE.OrbitControls(camera, container);
+    controls.autoRotate = true;
 
     // lights
     scene.add(new THREE.AmbientLight(0x736F6E));
@@ -65,16 +68,15 @@ function onWindowResize(){
 
   function animate(){
       requestAnimationFrame(animate);
-      render();}
+      render();
+  }
 
   function render(){
       var timer=Date.now() * 0.0005;
-      r=150;
-      camera.position.x=r*Math.cos(timer);
-      camera.position.z=r*Math.sin(timer);
-      camera.lookAt(scene.position);
+
       renderer.render(scene, camera);
-      renderer.setClearColor(0xf5f5f5, 1);}
+      renderer.setClearColor(0xf5f5f5, 1);
+  }
 </script>
 
 </body>
