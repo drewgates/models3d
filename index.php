@@ -76,16 +76,6 @@ if(empty($_SERVER['PHP_AUTH_PW']) || $_SERVER['PHP_AUTH_PW'] != $password) {
               // $arr is now array(2, 4, 6, 8)
               unset($value); // break the reference with the last element
               ?>
-              <li><a class='name'>Mike sucks</a></li>
-              <li><a class='name'>Oh man</a></li>
-              <li><a class='name'>Oh man</a></li>
-              <li><a class='name'>Oh man</a></li>
-              <li><a class='name'>Oh man</a></li>
-              <li><a class='name'>Oh man</a></li>
-              <li><a class='name'>Oh man</a></li>
-              <li><a class='name'>Oh man</a></li>
-              <li><a class='name'>Oh man</a></li>
-              <li><a class='name'>Hell boy</a></li>
           </ul>
       </div>
     </div>

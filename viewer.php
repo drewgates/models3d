@@ -6,8 +6,6 @@
 </head>
 <body>
 
-
-
 <script>
 var container, camera, scene, renderer;
 var orbitControls;
